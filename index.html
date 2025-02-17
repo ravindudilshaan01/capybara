@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capybara Facts</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0f7fa;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 90%;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00796b;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-out;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #00796b;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        .fact-display {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #333333;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .fact-display.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); }
+            to { transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .fact-display {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Capybara Facts</h1>
+        <button id="generateFactBtn">Show Random Fact</button>
+        <div id="factDisplay" class="fact-display"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const facts = [
+                "Capybaras are the largest rodents in the world.",
+                "They are native to South America and live in savannas and dense forests near bodies of water.",
+                "Capybaras are highly social animals and often live in groups of 10-20 individuals.",
+                "They are excellent swimmers and can hold their breath underwater for up to five minutes.",
+                "Capybaras are herbivores and primarily eat grasses and aquatic plants.",
+                "They have webbed feet which help them swim efficiently.",
+                "Capybaras communicate with each other through a variety of vocalizations, including purrs, barks, and whistles.",
+                "They have a lifespan of about 8-10 years in the wild.",
+                "Capybaras are known for their gentle and friendly nature, often allowing other animals to sit on their backs.",
+                "They have a unique digestive system that allows them to extract maximum nutrients from their food."
+            ];
+
+            const generateFactBtn = document.getElementById('generateFactBtn');
+            const factDisplay = document.getElementById('factDisplay');
+
+            generateFactBtn.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                factDisplay.textContent = facts[randomIndex];
+                factDisplay.classList.add('show');
+            });
+        });
+    </script>
+</body>
+</html>
